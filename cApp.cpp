@@ -20,7 +20,7 @@ cApp::~cApp() {
 
 bool cApp::OnInit()
 {
-	//wxImage::AddHandler(new wxPNGHandler());//UNECESSARY
+	wxImage::AddHandler(new wxPNGHandler());//for use when loading png files to wxImage
 	m_frame1 = new cMain();
 	m_frame1->Show();
 	return true;

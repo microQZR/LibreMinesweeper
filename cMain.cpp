@@ -15,7 +15,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	//##//Setting size hints
 	this->SetSizeHints(wxSize(250,250), wxSize(1000,1000));
 
-	btn = new wxButton*[nFieldWidth*nFieldHeight];
+	btn = new wxBitmapButton*[nFieldWidth*nFieldHeight]; //DEBUG//come here//Changed from wxButton to wxBitmapButton
 	wxGridSizer *grid = new wxGridSizer(nFieldWidth, nFieldHeight, 0, 0);
 
 	nField = new int[nFieldWidth * nFieldHeight];
@@ -54,7 +54,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	{
 		for (int y =0; y <nFieldHeight; y++)
 		{
-			btn[y*nFieldWidth + x] = new wxButton(this, 10000 + (y*nFieldWidth +x),"", wxDefaultPosition,wxSize(10,10));
+			btn[y*nFieldWidth + x] = new wxBitmapButton(this, 10000 + (y*nFieldWidth +x), *bmpBlank, wxDefaultPosition,wxSize(10,10));
 			btn[y*nFieldWidth + x]->SetFont(font);
 			grid->Add(btn[y*nFieldWidth+x], 1, wxEXPAND | wxALL);
 
@@ -76,7 +76,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	//##//implementing a status bar
 	//add: 1.sizer; 2.wxSaticBitmap (i.e. bitmap control); 3.staticTxt
 	statsbar1 = this->CreateStatusBar(1, wxSTB_DEFAULT_STYLE, wxID_ANY);
-	wxBitmap *mineFlag = new wxBitmap(wxString("testgimp.png"), wxBITMAP_TYPE_PNG);
+	wxBitmap *mineFlag = new wxBitmap(wxString("Resources/testgimp.png"), wxBITMAP_TYPE_PNG);
 	//SECTION FOR UPDATE
 	wxBoxSizer *statsSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer *hbox1_StatsB = new wxBoxSizer(wxHORIZONTAL);
@@ -332,14 +332,15 @@ void cMain::OnRightClick(wxMouseEvent &evt)
 	{
 		if(flagCount < lvlSelect)
 			{
-				btn[y*nFieldWidth + x]->SetLabel("X");
+				//btn[y*nFieldWidth + x]->SetBitmap(*bmpFlag30p);//DEBUG//come here//This line is not working
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpFlag30p);//DEBUG//Works with wxBitmapButton
 				flagCount++;
 				hasMineFlag[y*nFieldWidth + x] = true;
 			}
 	}
 	else
 	{
-		btn[y*nFieldWidth + x]->SetLabel("");
+		btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpBlank);//DEBUG//come here//Works with wxBitmapButton
 		flagCount--;
 		hasMineFlag[y*nFieldWidth + x] = false;
 	}
@@ -439,7 +440,7 @@ void cMain::OnClickRestart(wxCommandEvent &evt)
 		for (int y = 0; y < nFieldHeight; y++)
 		{
 			nField[y*nFieldWidth + x] = 0;
-			btn[y*nFieldWidth + x]->SetLabel("");
+			btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpBlank); //Changed from SetLabel() to SetBitmapLabel()
 			btn[y*nFieldWidth + x]->Enable(true);
 			hasMineFlag[y*nFieldWidth + x] = false;
 		}

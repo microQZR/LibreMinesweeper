@@ -22,7 +22,7 @@ public:
 	virtual ~cMain();
 	int nFieldWidth = 10;
 	int nFieldHeight = 10;
-	wxButton **btn;
+	wxBitmapButton **btn; //DEBUG//come here//changed from wxButton to wxBitmapButton
 	int *nField = nullptr; //array mask for registering presence of mines
 	bool bFirstClick = true;
 	wxDialog *endGameDial;
@@ -71,6 +71,13 @@ public:
 	void ResetEndGMsg();
 	int GetBaseScore();
 	void UpdateEndGameScore();
+
+//Preparing bitmaps & graphics for use
+	wxImage *imgFlag = new wxImage("Resources/Flag.png", wxBITMAP_TYPE_PNG);
+	wxBitmap *bmpFlag30p = new wxBitmap(imgFlag->Scale(30,30, wxIMAGE_QUALITY_HIGH));
+	wxBitmap *bmpInval = nullptr;
+	wxBitmap *bmpBlank = new wxBitmap("Resources/blank.png", wxBITMAP_TYPE_PNG);
+//end section
 
 	wxDECLARE_EVENT_TABLE();
 };
