@@ -7,15 +7,12 @@
 
 #include "cMain.h"
 
-wxBEGIN_EVENT_TABLE(cMain, wxFrame)
-wxEND_EVENT_TABLE()
-
 cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxPoint(100, 100), wxSize(600, 665))
 {
 	//##//Setting size hints
 	this->SetSizeHints(wxSize(250,250), wxSize(1000,1000));
 
-	btn = new wxBitmapButton*[nFieldWidth*nFieldHeight]; //DEBUG//come here//Changed from wxButton to wxBitmapButton
+	btn = new wxBitmapButton*[nFieldWidth*nFieldHeight];
 	wxGridSizer *grid = new wxGridSizer(nFieldWidth, nFieldHeight, 0, 0);
 
 	nField = new int[nFieldWidth * nFieldHeight];
@@ -27,15 +24,14 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 		{ hasMineFlag[y*nFieldWidth + x] = false; }
 
 	//##//Adding toolbar and buttons for game control
-	toolbar1 = this->CreateToolBar(wxTB_HORIZONTAL, wxID_ANY);
+	wxToolBar *toolbar1 = this->CreateToolBar(wxTB_HORIZONTAL, wxID_ANY);
+	wxBitmapButton *settingsButton = new wxBitmapButton(toolbar1, 9001, *bmpSettings40p, wxDefaultPosition, wxSize(40,40), 0);
+	wxBitmapButton *forfeitButton = new wxBitmapButton(toolbar1, 9002, *bmpForfeit40p, wxDefaultPosition, wxSize(40,40), 0);
+	wxBitmapButton *restartButton = new wxBitmapButton(toolbar1, 9003, *bmpRestart40p, wxDefaultPosition, wxSize(40,40), 0);
+    settingsButton->SetToolTip(wxString("Settings"));
+	forfeitButton->SetToolTip("Forfeit");
+	restartButton->SetToolTip("Restart");
 	
-	wxButton *settingsButton = new wxButton(toolbar1, 9001, "Setings", wxDefaultPosition, wxSize(40,40), 0);
-	wxButton *forfeitButton = new wxButton(toolbar1, 9002, "Forfeit", wxDefaultPosition, wxSize(40,40), 0);
-	wxButton *restartButton = new wxButton(toolbar1, 9003, "Restart", wxDefaultPosition, wxSize(40,40), 0);
-    //##To be implemented##//SettingsB->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(cMain::OnSelectColour), nullptr, this);
-	//settingsButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(cMain::OnClickSettings));
-	
-
 	toolbar1->AddStretchableSpace();
 	toolbar1->AddStretchableSpace();
 	toolbar1->AddControl(settingsButton);
@@ -46,6 +42,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	toolbar1->AddStretchableSpace();
 	toolbar1->AddStretchableSpace();
 	toolbar1->Realize();
+	//End of toolbar section
 
 
 	wxFont font(24, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false);
@@ -55,7 +52,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 		for (int y =0; y <nFieldHeight; y++)
 		{
 			btn[y*nFieldWidth + x] = new wxBitmapButton(this, 10000 + (y*nFieldWidth +x), *bmpBlank, wxDefaultPosition,wxSize(10,10));
-			btn[y*nFieldWidth + x]->SetFont(font);
+			//btn[y*nFieldWidth + x]->SetFont(font);//Font is useless after switch to wxBitmapButton
 			grid->Add(btn[y*nFieldWidth+x], 1, wxEXPAND | wxALL);
 
 			btn[y*nFieldWidth + x]->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::OnButtonClicked, this);
@@ -67,16 +64,12 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	//##//Setting sizer within sizer to attempt to control aspect ratio
 	wxBoxSizer *vBox = new wxBoxSizer(wxVERTICAL);
 	vBox->Add(grid, 1, wxSHAPED | wxALIGN_CENTER);
-	
 	this->SetSizer(vBox); //##//Changed parameter from 'grid' to vBox
-	
 	grid->Layout(); //##//See above
 	vBox->Layout();
 
 	//##//implementing a status bar
-	//add: 1.sizer; 2.wxSaticBitmap (i.e. bitmap control); 3.staticTxt
 	statsbar1 = this->CreateStatusBar(1, wxSTB_DEFAULT_STYLE, wxID_ANY);
-	wxBitmap *mineFlag = new wxBitmap(wxString("Resources/testgimp.png"), wxBITMAP_TYPE_PNG);
 	//SECTION FOR UPDATE
 	wxBoxSizer *statsSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer *hbox1_StatsB = new wxBoxSizer(wxHORIZONTAL);
@@ -89,7 +82,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	statsbarTxt3->SetBackgroundColour(*wxYELLOW);
 	statsbarTxt4 = new wxStaticText(statsbar1, wxID_ANY, wxString("0"), wxDefaultPosition, wxDefaultSize);
 	statsbarTxt4->SetBackgroundColour(*wxGREEN);
-	wxStaticBitmap *statsbarBMP = new wxStaticBitmap(statsbar1, wxID_ANY, *mineFlag, wxDefaultPosition, wxSize(20, 20));//Working as should
+	wxStaticBitmap *statsbarBMP = new wxStaticBitmap(statsbar1, wxID_ANY, *bmpFlag20p, wxDefaultPosition, wxSize(20, 20));//Working as should
 	//hbox1_StatsB->AddStretchSpacer(1);
 	hbox1_StatsB->Add(statsbarTxt1, 1, wxALIGN_CENTER | wxLEFT, 45);
 	hbox1_StatsB->Add(statsbarBMP, 0, wxALIGN_CENTER);
@@ -105,37 +98,36 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	//##//End-game dialog section start//
 	endGameDial = new wxDialog(this, 7000, wxString("Game Ended"), wxDefaultPosition, wxSize(450, 300));//add parameters
 	wxBoxSizer *vboxEndGame = new wxBoxSizer(wxVERTICAL);
-	wxBoxSizer *hbox1_EndGame = new wxBoxSizer(wxHORIZONTAL);
+	hbox1_EndGame = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer *hbox2_EndGame = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer *hbox3_EndGame = new wxBoxSizer(wxHORIZONTAL);
-	wxStaticBitmap *EndGBmp1 = new wxStaticBitmap(endGameDial, wxID_ANY, *mineFlag, wxDefaultPosition, wxSize(20,20));
-	wxStaticBitmap *EndGBmp2 = new wxStaticBitmap(endGameDial, wxID_ANY, *mineFlag, wxDefaultPosition, wxSize(20,20));
-	//wxStaticBitmap *EndGBmp3 = new wxStaticBitmap(endGameDial, wxID_ANY, *mineFlag, wxDefaultPosition, wxSize(20,20));
-	//wxStaticBitmap *EndGBmp4 = new wxStaticBitmap(endGameDial, wxID_ANY, *mineFlag, wxDefaultPosition, wxSize(20,20));
-	//wxStaticBitmap *EndGBmp5 = new wxStaticBitmap(endGameDial, wxID_ANY, *mineFlag, wxDefaultPosition, wxSize(20,20));
-	//THE ABOVE 3 LINES SHOULD LOAD 3 WXBITMAP INSTEAD, FOR SETTING AS BITMAP LABEL!!!
+
+	EndGBmp_TL = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TL40p, wxDefaultPosition); //DEBUG//come here//Try using an empty constructor, since the bmp will be reinitialized later anyways..
+	EndGBmp_TR = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TR40p, wxDefaultPosition); //DEBUG//come here//Try using an empty constructor, since the bmp will be reinitialized later anyways..
 	EndGTxt1 = new wxStaticText(endGameDial, wxID_ANY, wxString("Booom! Wrong Step!"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
+	EndGTxt1->SetBackgroundColour(*wxYELLOW);
 	EndGTxt2 = new wxStaticText(endGameDial, wxID_ANY, wxString("FINAL SCORE: ###"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-	//bool qqq = EndGTxt2->SetBackgroundColour(*wxBLUE);
-	//wxStaticText *EndGTxt3 = new wxStaticText(endGameDial, wxID_ANY, wxString("###"));
-	//qqq = EndGTxt3->SetBackgroundColour(*wxBLUE);
-	wxButton *EndGBtn1 = new wxButton(endGameDial, 7001, "Setings", wxDefaultPosition, wxSize(40,40));
-	wxButton *EndGBtn2 = new wxButton(endGameDial, 7002, "Restart", wxDefaultPosition, wxSize(40,40));
-	wxButton *EndGBtn3 = new wxButton(endGameDial, 7003, "Quit", wxDefaultPosition, wxSize(40,40));
-	wxBoxSizer *hboxExtra_EndGame = new wxBoxSizer(wxHORIZONTAL);
-	wxStaticBitmap *EndGBmp3 = new wxStaticBitmap(endGameDial, wxID_ANY, *mineFlag, wxDefaultPosition, wxSize(50,50));
-	//********************continue here//######################
+	
+	wxBitmapButton *EndGBtn1 = new wxBitmapButton(endGameDial, 7001, *bmpSettings25p, wxDefaultPosition, wxSize(40,40));
+	wxBitmapButton *EndGBtn2 = new wxBitmapButton(endGameDial, 7002, *bmpRestart25p, wxDefaultPosition, wxSize(40,40));
+	wxBitmapButton *EndGBtn3 = new wxBitmapButton(endGameDial, 7003, *bmpExit25p, wxDefaultPosition, wxSize(40,40));
+	EndGBtn1->SetToolTip("Settings");
+	EndGBtn2->SetToolTip("Restart");
+	EndGBtn3->SetToolTip("Quit");
+
+	hboxExtra_EndGame = new wxBoxSizer(wxHORIZONTAL);
+	EndGBmpMultiplier1 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX1_5_60p);
 	EndGTxt3 = new wxStaticText(endGameDial, wxID_ANY, wxString("Base score: "), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
 	EndGTxt3->SetBackgroundColour(*wxGREEN);
-	wxStaticText *EndGTxt4 = new wxStaticText(endGameDial, wxID_ANY, wxString("difficulty bonus"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
+	wxStaticText *EndGTxt4 = new wxStaticText(endGameDial, wxID_ANY, wxString("Difficulty\nBonus"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
 	EndGTxt4->SetBackgroundColour(*wxYELLOW);
-	hboxExtra_EndGame->Add(EndGTxt3, 1, wxALIGN_CENTER | wxRIGHT, 20);
-	hboxExtra_EndGame->Add(EndGBmp3, 0, wxALIGN_CENTER | wxRIGHT, 5);
+	hboxExtra_EndGame->Add(EndGTxt3, 1, wxALIGN_CENTER | wxLEFT, 25);
+	hboxExtra_EndGame->Add(EndGBmpMultiplier1, 0, wxALIGN_CENTER | wxLEFT, 15);
 	hboxExtra_EndGame->Add(EndGTxt4, 1, wxALIGN_CENTER | wxLEFT, 5);
 
-	hbox1_EndGame->Add(EndGBmp1, 1, wxALIGN_CENTER | wxRIGHT, 10);
-	hbox1_EndGame->Add(EndGTxt1, 1, wxALIGN_CENTER | wxLEFT | wxRIGHT, 10);
-	hbox1_EndGame->Add(EndGBmp2, 1, wxALIGN_CENTER | wxLEFT, 10);
+	hbox1_EndGame->Add(EndGBmp_TL, 1, wxALIGN_CENTER | wxRIGHT, 3); 
+	hbox1_EndGame->Add(EndGTxt1, 1, wxALIGN_CENTER | wxLEFT | wxRIGHT, 3); 
+	hbox1_EndGame->Add(EndGBmp_TR, 1, wxALIGN_CENTER | wxLEFT, 3); 
 	hbox2_EndGame->Add(EndGTxt2, 1, wxALIGN_CENTER);
 	hbox3_EndGame->Add(EndGBtn1, 0, wxALIGN_CENTER | wxRIGHT, 10);
 	hbox3_EndGame->Add(EndGBtn2, 0, wxALIGN_CENTER | wxLEFT | wxRIGHT, 10);
@@ -156,16 +148,11 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	//wxBoxSizer *hbox2_Settings = new wxBoxSizer(wxHORIZONTAL);
 	//wxBoxSizer *hbox3_Settings = new wxBoxSizer(wxHORIZONTAL);
 	wxSizer *hbox4_Settings = SettingsDial->CreateButtonSizer(wxCANCEL + wxOK);
-	//wxButton *SettingsCancel = new wxButton(SettingsDial, 7061, "Setings", wxDefaultPosition, wxSize(80,20));
-	//wxButton *SettingsOK = new wxButton(SettingsDial, 7062, "Restart", wxDefaultPosition, wxSize(80,20));
 	wxStaticText *SettingsTxt1 = new wxStaticText(SettingsDial, wxID_ANY, wxString("Game Difficulty"));
 	SettingsTxtDescr = new wxStaticText(SettingsDial, wxID_ANY, wxString("Hello Detective!\nSelect a game difficulty to get started."));
 	wxStaticText *SettingsTxtEZ = new wxStaticText(SettingsDial, wxID_ANY, wxString("Eazy"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
 	wxStaticText *SettingsTxtMED = new wxStaticText(SettingsDial, wxID_ANY, wxString("Medium"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
 	wxStaticText *SettingsTxtHRD = new wxStaticText(SettingsDial, wxID_ANY, wxString("Hard"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
-	//bool qqq = SettingsTxtHRD->SetBackgroundColour(*wxBLUE);
-	//qqq = SettingsTxtEZ->SetBackgroundColour(*wxBLUE);
-	//qqq = SettingsTxtMED->SetBackgroundColour(*wxBLUE);
 	SettingsSlider = new wxSlider(SettingsDial, 7051, 2, 1, 3, wxDefaultPosition, wxDefaultSize, wxSL_BOTH);
 	SettingsSlider->SetTickFreq(1);
 	hbox1_Settings->Add(SettingsTxtEZ, 1, wxLEFT, 10);
@@ -173,9 +160,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	hbox1_Settings->Add(SettingsTxtMED, 1);
 	hbox1_Settings->AddStretchSpacer(1);
 	hbox1_Settings->Add(SettingsTxtHRD, 1, wxRIGHT, 10);
-	//hbox2_Settings->AddStretchSpacer(1);
-	//hbox2_Settings->Add(SettingsCancel, 0);
-	//hbox2_Settings->Add(SettingsOK, 0, wxRIGHT, 15);
+	
 	vboxSettings->AddSpacer(20);
 	vboxSettings->Add(SettingsTxt1, 1, wxALIGN_LEFT | wxLEFT | wxRIGHT, 30);
 	vboxSettings->Add(SettingsSlider, 1, wxEXPAND | wxLEFT | wxRIGHT, 20);
@@ -239,7 +224,15 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 	// Check if player hit mine
 	if (nField[y*nFieldWidth + x] == -1)
 	{
+		//Display mine
+		btn[y*nFieldWidth + x]->SetBackgroundColour(*wxRED);
+		btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpMine40p);
+
 		//---COMMON BLOCK--------------------------------------------
+		//Reset end game dialog top corners bitmaps
+		EndGBmp_TL->SetBitmap(*bmpEndGDial_TL40p);
+		EndGBmp_TR->SetBitmap(*bmpEndGDial_TR40p);
+
 		//Reset end game message
 		switch(rand() % 2) 
 		{
@@ -250,10 +243,8 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 				EndGTxt1->SetLabel("Booom! You've died, detective...");
 				break;
 		}
-		//Update end game score
-		UpdateEndGameScore();
-		int aaa = endGameDial->ShowModal();
-		if (hasClosed == true) hasClosed = this->Close();
+
+		InvokeEndGameDialog();
 
 		// Rest game
 		wxCommandEvent *qqq;
@@ -275,26 +266,64 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 				}
 			}
 
-			// Update buttons label to show mine count if > 0
-			if (mine_count > 0)
-			{
-				btn[y*nFieldWidth + x]->SetLabel(std::to_string(mine_count));
-			}
+		//Restore the flag count if the clicked button is marked with a flag
+		if (hasMineFlag[y*nFieldWidth + x])
+		{
+			flagCount--;
+			statsbarTxt2->SetLabel(wxString(" x ")<<std::to_string(lvlSelect-flagCount)); //Updating status bar flag msg
+		}
+
+		// Update buttons label to show mine count
+		switch (mine_count)
+		{
+			case 0:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpBlank);
+				break;
+			case 1:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp1_30p);
+				break;
+			case 2:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp2_30p);
+				break;
+			case 3:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp3_30p);
+				break;
+			case 4:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp4_30p);
+				break;
+			case 5:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp5_30p);
+				break;
+			case 6:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp6_30p);
+				break;
+			case 7:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp7_30p);
+				break;
+			case 8:
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp8_30p);
+				break;
+		}
+		//btn[y*nFieldWidth + x]->SetLabel(std::to_string(mine_count));
 
 		scoreUnit++;
 		//update status bar score
 		statsbarTxt4->SetLabel(wxString(std::to_string(GetBaseScore())));
-		//int testdebug = 0; //debug var TO BE REMOVED
-		//testdebug = GetBaseScore();
-		//testdebug = 888;
 	}
 
+	//DEBUG//
+	//scoreUnit = (nFieldWidth * nFieldHeight) - lvlSelect;
+	//debug line above!!//TO BE REMOVED
 	if (scoreUnit == (nFieldWidth * nFieldHeight) - lvlSelect)
 	{
 		victoryAchieved = true;
-		//INSERT CODE FOR CHANGING THE TOP BITMAPS, MAY BE INCLUDED IN THE SWITH CASES
 		
 		//---COMMON BLOCK--------------------------------------------
+		//Reset end game dialog top corners bitmaps
+		EndGBmp_TL->SetBitmap(*bmpWinningDial_TLTR65p);
+		EndGBmp_TR->SetBitmap(*bmpWinningDial_TLTR65p);
+
+		//Reset end game message
 		switch(rand() % 3) 
 		{
 			case 0:
@@ -307,10 +336,22 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 				EndGTxt1->SetLabel("Outstanding! Victory achieved!");
 				break;
 		}
-		//Update end game score
-		UpdateEndGameScore();
+	
+		/*
+		UpdateEndGameScore(); //Update end game score
+		hbox1_EndGame->Layout(); //DEBUG//Update the sizer layout after changing elements within
 		int aaa = endGameDial->ShowModal();
 		if (hasClosed == true) hasClosed = this->Close();
+		*/
+
+		EndGBmpMultiplier2 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX2Victory_60p);
+		wxStaticText *EndGTxt5 = new wxStaticText(endGameDial, wxID_ANY, wxString("Victory\nBonus"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
+		EndGTxt5->SetBackgroundColour(*wxGREEN);
+		hboxExtra_EndGame->Add(EndGBmpMultiplier2, 0, wxALIGN_CENTER | wxLEFT, 5);
+		hboxExtra_EndGame->Add(EndGTxt5, 1, wxALIGN_CENTER | wxLEFT, 5);
+		InvokeEndGameDialog(); //Invoking end game dialog
+		EndGBmpMultiplier2->Destroy();
+		EndGTxt5->Destroy();
 
 		// Rest game
 		wxCommandEvent *qqq;
@@ -332,7 +373,7 @@ void cMain::OnRightClick(wxMouseEvent &evt)
 	{
 		if(flagCount < lvlSelect)
 			{
-				//btn[y*nFieldWidth + x]->SetBitmap(*bmpFlag30p);//DEBUG//come here//This line is not working
+				//btn[y*nFieldWidth + x]->SetBitmap(*bmpFlag30p);//DEBUG//This line is not working
 				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpFlag30p);//DEBUG//Works with wxBitmapButton
 				flagCount++;
 				hasMineFlag[y*nFieldWidth + x] = true;
@@ -340,12 +381,10 @@ void cMain::OnRightClick(wxMouseEvent &evt)
 	}
 	else
 	{
-		btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpBlank);//DEBUG//come here//Works with wxBitmapButton
+		btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpBlank); //Works with wxBitmapButton
 		flagCount--;
 		hasMineFlag[y*nFieldWidth + x] = false;
 	}
-	
-	//hasMineFlag[y*nFieldWidth + x] = !hasMineFlag[y*nFieldWidth + x];
 
 	//Updating status bar flag msg
 	statsbarTxt2->SetLabel(wxString(" x ")<<std::to_string(lvlSelect-flagCount));
@@ -385,11 +424,15 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 			btn[y*nFieldWidth + x]->Enable(false);
 
 			if (nField[y*nFieldWidth + x] == -1)
-				btn[y*nFieldWidth + x]->SetLabel("B");
+			{
+				//Display exposed mine bitmap
+				btn[y*nFieldWidth + x]->SetBackgroundColour(*wxRED);
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpMine40p);
+			}
 
 			else
 			{
-				// Count neighbouring mine
+				//Count neighbouring mine(s)
 				int mine_count = 0;
 				for (int i = -1; i < 2; i++)
 					for (int j = -1; j < 2; j++)
@@ -401,16 +444,47 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 						}
 					}
 
-					// Update buttons label to show mine count if > 0
-					if (mine_count > 0)
-					{
-						btn[y*nFieldWidth + x]->SetLabel(std::to_string(mine_count));
-					}
+				// Update buttons label to show mine count if > 0	
+				switch (mine_count)
+				{
+					case 0:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpBlank);
+						break;
+					case 1:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp1_30p);
+						break;
+					case 2:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp2_30p);
+						break;
+					case 3:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp3_30p);
+						break;
+					case 4:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp4_30p);
+						break;
+					case 5:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp5_30p);
+						break;
+					case 6:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp6_30p);
+						break;
+					case 7:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp7_30p);
+						break;
+					case 8:
+						btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp8_30p);
+						break;
+				}
 			}
 		}		
 	}
 
 	//---COMMON BLOCK--------------------------------------------
+	//Reset end game dialog top corners bitmaps
+	EndGBmp_TL->SetBitmap(*bmpForfeitDial_TL40p);
+	EndGBmp_TR->SetBitmap(*bmpForfeitDial_TR40p);
+
+	//Reset end game message
 	switch(rand() % 2) 
 	{
 		case 0:
@@ -420,10 +494,14 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 			EndGTxt1->SetLabel("Consider this a trial run.\nHow about another round?");
 			break;
 	}
-	//Update end game score
-	UpdateEndGameScore();
+
+	/*
+	UpdateEndGameScore(); //Update end game score
+	hbox1_EndGame->Layout(); //DEBUG//Update the sizer layout after changing elements within
 	int aaa = endGameDial->ShowModal();
 	if (hasClosed == true) hasClosed = this->Close();
+	*/
+	InvokeEndGameDialog();
 	//-----------------------------------------------------------
 }
 
@@ -440,6 +518,7 @@ void cMain::OnClickRestart(wxCommandEvent &evt)
 		for (int y = 0; y < nFieldHeight; y++)
 		{
 			nField[y*nFieldWidth + x] = 0;
+			btn[y*nFieldWidth + x]->SetBackgroundColour(wxNullColour);
 			btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpBlank); //Changed from SetLabel() to SetBitmapLabel()
 			btn[y*nFieldWidth + x]->Enable(true);
 			hasMineFlag[y*nFieldWidth + x] = false;
@@ -617,4 +696,29 @@ void cMain::UpdateEndGameScore()
 	}
 	EndGTxt2->SetLabel( wxString("FINAL SCORE: ") <<std::to_string(finalScore));
 	EndGTxt3->SetLabel( wxString("Base score: ") <<std::to_string(GetBaseScore()));
+}
+
+void cMain::InvokeEndGameDialog()
+{
+	//Setting the multiplier bitmap according to game difficulty
+	switch (lvlSelect)
+	{
+	case levelEasy:
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_60p);
+		break;
+	case levelMedium:
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_5_60p);
+		break;
+	case levelHard:
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2_60p);
+		break;
+	case testLevel:
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2Victory_60p);
+		break;
+	}
+	UpdateEndGameScore(); //Update end game score
+	hbox1_EndGame->Layout(); //DEBUG//Update the sizer layout after changing elements within
+	hboxExtra_EndGame->Layout(); //Update the sizer layout after changing elements within 
+	int aaa = endGameDial->ShowModal();
+	if (hasClosed == true) hasClosed = this->Close();
 }
