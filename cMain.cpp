@@ -75,13 +75,17 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	wxBoxSizer *hbox1_StatsB = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer *hbox2_StatsB = new wxBoxSizer(wxHORIZONTAL);
 	wxStaticText *statsbarTxt1 = new wxStaticText(statsbar1, wxID_ANY, wxString("Flags Remaining: "), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-	statsbarTxt1->SetBackgroundColour(*wxYELLOW);
+	//statsbarTxt1->SetBackgroundColour(*wxGREEN);
 	statsbarTxt2 = new wxStaticText(statsbar1, wxID_ANY, wxString(" x ")<<std::to_string(lvlSelect), wxDefaultPosition, wxDefaultSize);
-	statsbarTxt2->SetBackgroundColour(*wxGREEN);
+	//statsbarTxt2->SetBackgroundColour(*wxGREEN);
+	statsbarTxt2->SetForegroundColour(*wxRED);
+	statsbarTxt2->SetFont(statsbarTxt2->GetFont().MakeBold());
 	wxStaticText *statsbarTxt3 = new wxStaticText(statsbar1, wxID_ANY, wxString("Current Score: "), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
-	statsbarTxt3->SetBackgroundColour(*wxYELLOW);
+	//statsbarTxt3->SetBackgroundColour(*wxYELLOW);
 	statsbarTxt4 = new wxStaticText(statsbar1, wxID_ANY, wxString("0"), wxDefaultPosition, wxDefaultSize);
-	statsbarTxt4->SetBackgroundColour(*wxGREEN);
+	//statsbarTxt4->SetBackgroundColour(*wxYELLOW);
+	statsbarTxt4->SetForegroundColour(*wxBLUE);
+	statsbarTxt4->SetFont(statsbarTxt4->GetFont().MakeBold());
 	wxStaticBitmap *statsbarBMP = new wxStaticBitmap(statsbar1, wxID_ANY, *bmpFlag20p, wxDefaultPosition, wxSize(20, 20));//Working as should
 	//hbox1_StatsB->AddStretchSpacer(1);
 	hbox1_StatsB->Add(statsbarTxt1, 1, wxALIGN_CENTER | wxLEFT, 45);
@@ -97,17 +101,23 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 
 	//##//End-game dialog section start//
 	endGameDial = new wxDialog(this, 7000, wxString("Game Ended"), wxDefaultPosition, wxSize(450, 300));//add parameters
-	wxBoxSizer *vboxEndGame = new wxBoxSizer(wxVERTICAL);
+	
+	vboxEndGame = new wxBoxSizer(wxVERTICAL);
 	hbox1_EndGame = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer *hbox2_EndGame = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer *hbox3_EndGame = new wxBoxSizer(wxHORIZONTAL);
 
 	EndGBmp_TL = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TL40p, wxDefaultPosition); //DEBUG//come here//Try using an empty constructor, since the bmp will be reinitialized later anyways..
 	EndGBmp_TR = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TR40p, wxDefaultPosition); //DEBUG//come here//Try using an empty constructor, since the bmp will be reinitialized later anyways..
-	EndGTxt1 = new wxStaticText(endGameDial, wxID_ANY, wxString("Booom! Wrong Step!"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-	EndGTxt1->SetBackgroundColour(*wxYELLOW);
-	EndGTxt2 = new wxStaticText(endGameDial, wxID_ANY, wxString("FINAL SCORE: ###"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
 	
+	EndGTxt1 = new wxStaticText(endGameDial, wxID_ANY, wxString("Booom! Wrong Step!"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
+	wxFont fontForEndGTxt1(wxFontInfo(9).Family(wxFONTFAMILY_SWISS).Bold());
+	EndGTxt1->SetFont(fontForEndGTxt1);
+
+	EndGTxt2 = new wxStaticText(endGameDial, wxID_ANY, wxString("FINAL SCORE: ###"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
+	wxFont fontForEndGTxt2(wxFontInfo(16).Italic().Bold().Family(wxFONTFAMILY_SWISS));
+	EndGTxt2->SetFont(fontForEndGTxt2);
+
 	wxBitmapButton *EndGBtn1 = new wxBitmapButton(endGameDial, 7001, *bmpSettings25p, wxDefaultPosition, wxSize(40,40));
 	wxBitmapButton *EndGBtn2 = new wxBitmapButton(endGameDial, 7002, *bmpRestart25p, wxDefaultPosition, wxSize(40,40));
 	wxBitmapButton *EndGBtn3 = new wxBitmapButton(endGameDial, 7003, *bmpExit25p, wxDefaultPosition, wxSize(40,40));
@@ -116,11 +126,16 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	EndGBtn3->SetToolTip("Quit");
 
 	hboxExtra_EndGame = new wxBoxSizer(wxHORIZONTAL);
-	EndGBmpMultiplier1 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX1_5_60p);
+	EndGBmpMultiplier1 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX1_5_55p);
+	
 	EndGTxt3 = new wxStaticText(endGameDial, wxID_ANY, wxString("Base score: "), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-	EndGTxt3->SetBackgroundColour(*wxGREEN);
-	wxStaticText *EndGTxt4 = new wxStaticText(endGameDial, wxID_ANY, wxString("Difficulty\nBonus"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
-	EndGTxt4->SetBackgroundColour(*wxYELLOW);
+	wxFont fontForEndGTxt3(wxFontInfo(11));
+	EndGTxt3->SetFont(fontForEndGTxt3);
+
+	EndGTxt4 = new wxStaticText(endGameDial, wxID_ANY, wxString("Difficulty\nBonus"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
+	wxFont fontForEndGTxt4(wxFontInfo(10).Bold().Family(wxFONTFAMILY_SWISS));
+	EndGTxt4->SetFont(fontForEndGTxt4);
+
 	hboxExtra_EndGame->Add(EndGTxt3, 1, wxALIGN_CENTER | wxLEFT, 25);
 	hboxExtra_EndGame->Add(EndGBmpMultiplier1, 0, wxALIGN_CENTER | wxLEFT, 15);
 	hboxExtra_EndGame->Add(EndGTxt4, 1, wxALIGN_CENTER | wxLEFT, 5);
@@ -142,7 +157,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	//End-game dialog section end//
 
 	//##//Settings dialog section start//
-	SettingsDial = new wxDialog(this, 7050, wxString("Settings"));
+	SettingsDial = new wxDialog(this, 7050, wxString("Settings"),wxDefaultPosition, wxSize(450, 300));
 	wxBoxSizer *vboxSettings = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer *hbox1_Settings = new wxBoxSizer(wxHORIZONTAL);
 	//wxBoxSizer *hbox2_Settings = new wxBoxSizer(wxHORIZONTAL);
@@ -155,6 +170,9 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	wxStaticText *SettingsTxtHRD = new wxStaticText(SettingsDial, wxID_ANY, wxString("Hard"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	SettingsSlider = new wxSlider(SettingsDial, 7051, 2, 1, 3, wxDefaultPosition, wxDefaultSize, wxSL_BOTH);
 	SettingsSlider->SetTickFreq(1);
+	SettingsTxt1->SetFont(SettingsTxt1->GetFont().MakeBold().MakeLarger());
+	//SettingsTxtDescr->SetFont(SettingsTxtDescr->GetFont().MakeLarger());
+
 	hbox1_Settings->Add(SettingsTxtEZ, 1, wxLEFT, 10);
 	hbox1_Settings->AddStretchSpacer(1);
 	hbox1_Settings->Add(SettingsTxtMED, 1);
@@ -163,12 +181,14 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	
 	vboxSettings->AddSpacer(20);
 	vboxSettings->Add(SettingsTxt1, 1, wxALIGN_LEFT | wxLEFT | wxRIGHT, 30);
+	vboxSettings->AddSpacer(10);
 	vboxSettings->Add(SettingsSlider, 1, wxEXPAND | wxLEFT | wxRIGHT, 20);
 	vboxSettings->Add(hbox1_Settings, 1, wxEXPAND);
 	vboxSettings->AddSpacer(15);
 	vboxSettings->Add(SettingsTxtDescr, 1, wxEXPAND | wxLEFT | wxRIGHT, 30);
 	vboxSettings->AddSpacer(15);
 	vboxSettings->Add(hbox4_Settings, 1, wxALIGN_RIGHT);
+	vboxSettings->AddSpacer(5);
 	SettingsDial->SetSizer(vboxSettings);
 	vboxSettings->Layout();
 	//Settings dialog section end//
@@ -344,9 +364,8 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 		if (hasClosed == true) hasClosed = this->Close();
 		*/
 
-		EndGBmpMultiplier2 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX2Victory_60p);
+		EndGBmpMultiplier2 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX2Victory_55p);
 		wxStaticText *EndGTxt5 = new wxStaticText(endGameDial, wxID_ANY, wxString("Victory\nBonus"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
-		EndGTxt5->SetBackgroundColour(*wxGREEN);
 		hboxExtra_EndGame->Add(EndGBmpMultiplier2, 0, wxALIGN_CENTER | wxLEFT, 5);
 		hboxExtra_EndGame->Add(EndGTxt5, 1, wxALIGN_CENTER | wxLEFT, 5);
 		InvokeEndGameDialog(); //Invoking end game dialog
@@ -704,21 +723,23 @@ void cMain::InvokeEndGameDialog()
 	switch (lvlSelect)
 	{
 	case levelEasy:
-		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_60p);
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_55p);
+		EndGTxt4->SetForegroundColour(*wxGREEN);
 		break;
 	case levelMedium:
-		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_5_60p);
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_5_55p);
+		EndGTxt4->SetForegroundColour(*wxCYAN);
 		break;
 	case levelHard:
-		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2_60p);
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2_55p);
+		EndGTxt4->SetForegroundColour(*wxRED);
 		break;
 	case testLevel:
-		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2Victory_60p);
+		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2Victory_55p);
 		break;
 	}
 	UpdateEndGameScore(); //Update end game score
-	hbox1_EndGame->Layout(); //DEBUG//Update the sizer layout after changing elements within
-	hboxExtra_EndGame->Layout(); //Update the sizer layout after changing elements within 
+	vboxEndGame->Layout();
 	int aaa = endGameDial->ShowModal();
 	if (hasClosed == true) hasClosed = this->Close();
 }

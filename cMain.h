@@ -36,8 +36,10 @@ public:
 	wxStaticText *EndGTxt1;
 	wxStaticText *EndGTxt2;
 	wxStaticText *EndGTxt3;
+	wxStaticText *EndGTxt4;
 	wxBoxSizer *hbox1_EndGame; //End game dialog top sizer
 	wxBoxSizer *hboxExtra_EndGame; //End game dialog score breakdown and multiplier sizer
+	wxBoxSizer *vboxEndGame;
 	wxStaticBitmap *EndGBmp_TL; //Top left bitmap
 	wxStaticBitmap *EndGBmp_TR; //Top right bitmap
 	wxStaticBitmap *EndGBmpMultiplier1; //1st multiplier bitmap
@@ -98,7 +100,7 @@ public:
 	wxImage *imgForfeit = new wxImage("Resources/Forfeit.png", wxBITMAP_TYPE_PNG);
 	wxImage *imgRestart = new wxImage("Resources/Restart.png", wxBITMAP_TYPE_PNG);
 	wxImage *imgExit = new wxImage("Resources/Exit.png", wxBITMAP_TYPE_PNG);
-	wxImage *imgMultiplierX1 = new wxImage("Resources/MultiplierX1.png", wxBITMAP_TYPE_PNG);
+	wxImage *imgMultiplierX1 = new wxImage("Resources/MultiplierX1V2.png", wxBITMAP_TYPE_PNG);
 	wxImage *imgMultiplierX1_5 = new wxImage("Resources/MultiplierX1_5.png", wxBITMAP_TYPE_PNG);
 	wxImage *imgMultiplierX2 = new wxImage("Resources/MultiplierX2.png", wxBITMAP_TYPE_PNG);
 	wxImage *imgMultiplierX2Victory = new wxImage("Resources/MultiplierX2V2.png", wxBITMAP_TYPE_PNG);
@@ -118,10 +120,10 @@ public:
 	wxBitmap *bmpRestart40p = new wxBitmap(imgRestart->Scale(40,40, wxIMAGE_QUALITY_HIGH));
 	wxBitmap *bmpRestart25p = new wxBitmap(imgRestart->Scale(25,25, wxIMAGE_QUALITY_HIGH));
 	wxBitmap *bmpExit25p = new wxBitmap(imgExit->Scale(25,25, wxIMAGE_QUALITY_HIGH));
-	wxBitmap *bmpMultiplierX1_60p = new wxBitmap(imgMultiplierX1->Scale(60,60, wxIMAGE_QUALITY_HIGH));
-	wxBitmap *bmpMultiplierX2_60p = new wxBitmap(imgMultiplierX2->Scale(60,60, wxIMAGE_QUALITY_HIGH));
-	wxBitmap *bmpMultiplierX1_5_60p = new wxBitmap(imgMultiplierX1_5->Scale(60,60, wxIMAGE_QUALITY_HIGH));
-	wxBitmap *bmpMultiplierX2Victory_60p = new wxBitmap(imgMultiplierX2Victory->Scale(60,60, wxIMAGE_QUALITY_HIGH));
+	wxBitmap *bmpMultiplierX1_55p = new wxBitmap(imgMultiplierX1->Scale(55,55, wxIMAGE_QUALITY_HIGH));
+	wxBitmap *bmpMultiplierX2_55p = new wxBitmap(imgMultiplierX2->Scale(55,55, wxIMAGE_QUALITY_HIGH));
+	wxBitmap *bmpMultiplierX1_5_55p = new wxBitmap(imgMultiplierX1_5->Scale(55,55, wxIMAGE_QUALITY_HIGH));
+	wxBitmap *bmpMultiplierX2Victory_55p = new wxBitmap(imgMultiplierX2Victory->Scale(55,55, wxIMAGE_QUALITY_HIGH));
 	
 	wxBitmap *bmpEndGDial_TL40p = new wxBitmap(imgEndGDial_TL->Scale(40,40, wxIMAGE_QUALITY_HIGH));
 	wxBitmap *bmpEndGDial_TR40p = new wxBitmap(imgEndGDial_TR->Scale(40,40, wxIMAGE_QUALITY_HIGH));
