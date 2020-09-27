@@ -32,28 +32,28 @@ public:
 	
 	//End game dialog section
 	bool hasClosed = false;
-	wxDialog *endGameDial;
-	wxStaticText *EndGTxt1;
-	wxStaticText *EndGTxt2;
-	wxStaticText *EndGTxt3;
-	wxStaticText *EndGTxt4;
-	wxBoxSizer *hbox1_EndGame; //End game dialog top sizer
-	wxBoxSizer *hboxExtra_EndGame; //End game dialog score breakdown and multiplier sizer
-	wxBoxSizer *vboxEndGame;
-	wxStaticBitmap *EndGBmp_TL; //Top left bitmap
-	wxStaticBitmap *EndGBmp_TR; //Top right bitmap
-	wxStaticBitmap *EndGBmpMultiplier1; //1st multiplier bitmap
-	wxStaticBitmap *EndGBmpMultiplier2; //2nd multiplier bitmap
+	wxDialog *endGameDial = nullptr;
+	wxStaticText *EndGTxt1 = nullptr;
+	wxStaticText *EndGTxt2 = nullptr;
+	wxStaticText *EndGTxt3 = nullptr;
+	wxStaticText *EndGTxt4 = nullptr;
+	wxBoxSizer *hbox1_EndGame = nullptr; //End game dialog top sizer
+	wxBoxSizer *hboxExtra_EndGame = nullptr; //End game dialog score breakdown and multiplier sizer
+	wxBoxSizer *vboxEndGame = nullptr;
+	wxStaticBitmap *EndGBmp_TL = nullptr; //Top left bitmap
+	wxStaticBitmap *EndGBmp_TR = nullptr; //Top right bitmap
+	wxStaticBitmap *EndGBmpMultiplier1 = nullptr; //1st multiplier bitmap
+	//wxStaticBitmap *EndGBmpMultiplier2 = nullptr; //2nd multiplier bitmap//DEBUG//moved object declaration to implementation file
 	
 	//Settings dialog section
-	wxDialog *SettingsDial;
-	wxSlider *SettingsSlider;
-	wxStaticText *SettingsTxtDescr;
+	wxDialog *SettingsDial = nullptr;
+	wxSlider *SettingsSlider = nullptr;
+	wxStaticText *SettingsTxtDescr = nullptr;
 		
 	//Status bar section
 	wxStatusBar *statsbar1 = nullptr; //Add a status bar
-	wxStaticText *statsbarTxt2; //some status bar text with flags remaining count
-	wxStaticText *statsbarTxt4; //status bar score label
+	wxStaticText *statsbarTxt2 = nullptr; //some status bar text with flags remaining count
+	wxStaticText *statsbarTxt4 = nullptr; //status bar score label
 	
 	//MISC elements section
 	//gameLevel lvlSelect = levelMedium; //THE DEFAULT TO BE RESTORE AFTER TESTING!!!

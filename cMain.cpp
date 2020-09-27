@@ -215,6 +215,7 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 	int x = (evt.GetId() - 10000) % nFieldWidth;
 	int y = (evt.GetId() - 10000) / nFieldWidth;
 	
+	//Initializing the mine field array on player first click
 	if (bFirstClick)
 	{
 		int totalMineCount = lvlSelect;
@@ -318,11 +319,9 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmp8_30p);
 				break;
 		}
-		//btn[y*nFieldWidth + x]->SetLabel(std::to_string(mine_count));
 
 		scoreUnit++;
-		//update status bar score
-		statsbarTxt4->SetLabel(wxString(std::to_string(GetBaseScore())));
+		statsbarTxt4->SetLabel(wxString(std::to_string(GetBaseScore()))); //update status bar score
 	}
 
 	//DEBUG//
@@ -351,14 +350,8 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 				break;
 		}
 	
-		/*
-		UpdateEndGameScore(); //Update end game score
-		hbox1_EndGame->Layout(); //DEBUG//Update the sizer layout after changing elements within
-		int aaa = endGameDial->ShowModal();
-		if (hasClosed == true) hasClosed = this->Close();
-		*/
-
-		EndGBmpMultiplier2 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX2Victory_55p);
+		//Add characteristic dialog element to the winning end game dialog
+		wxStaticBitmap *EndGBmpMultiplier2 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX2Victory_55p);
 		wxStaticText *EndGTxt5 = new wxStaticText(endGameDial, wxID_ANY, wxString("Victory\nBonus"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
 		hboxExtra_EndGame->Add(EndGBmpMultiplier2, 0, wxALIGN_CENTER | wxLEFT, 5);
 		hboxExtra_EndGame->Add(EndGTxt5, 1, wxALIGN_CENTER | wxLEFT, 5);
