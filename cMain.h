@@ -76,10 +76,10 @@ public:
 	void OnClickDialogRestart(wxCommandEvent &evt);
 	//void OnClickDialogSettings(wxCommandEvent &evt);
 	void OnClickQuit(wxCommandEvent &evt);
-	void OnLevelSelect(wxCommandEvent &evt);
+	void OnSliderLevelSelect(wxCommandEvent &evt);
 	void OnClickSettingsOK(wxCommandEvent &evt);
 	void OnClickSettingsCancel(wxCommandEvent &evt);
-	void ResetSettingsMsg();
+	//void ResetSettingsMsg(); //Phased out useless
 	void ResetEndGMsg();
 	int GetBaseScore();
 	void UpdateEndGameScore();

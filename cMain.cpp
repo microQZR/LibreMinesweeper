@@ -195,7 +195,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	EndGBtn3->Bind(wxEVT_BUTTON, &cMain::OnClickQuit, this, 7003);
 	EndGBtn2->Bind(wxEVT_BUTTON, &cMain::OnClickDialogRestart, this, 7002);
 	EndGBtn1->Bind(wxEVT_BUTTON, &cMain::OnClickSettings, this, 7001);
-	SettingsDial->Bind(wxEVT_SLIDER, &cMain::OnLevelSelect, this, 7051);
+	SettingsDial->Bind(wxEVT_SLIDER, &cMain::OnSliderLevelSelect, this, 7051);
 	SettingsDial->Bind(wxEVT_BUTTON, &cMain::OnClickSettingsOK, this, wxID_OK);
 	SettingsDial->Bind(wxEVT_BUTTON, &cMain::OnClickSettingsCancel, this, wxID_CANCEL);
 	//Event binding section end//
@@ -375,12 +375,12 @@ void cMain::OnRightClick(wxMouseEvent &evt)
 	int x = (evt.GetId() - 10000) % nFieldWidth;
 	int y = (evt.GetId() - 10000) / nFieldWidth;
 
+	//Set & unset mine flag over the button clicked
 	if(!hasMineFlag[y*nFieldWidth + x])
 	{
 		if(flagCount < lvlSelect)
 			{
-				//btn[y*nFieldWidth + x]->SetBitmap(*bmpFlag30p);//DEBUG//This line is not working
-				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpFlag30p);//DEBUG//Works with wxBitmapButton
+				btn[y*nFieldWidth + x]->SetBitmapLabel(*bmpFlag30p);//Works with wxBitmapButton
 				flagCount++;
 				hasMineFlag[y*nFieldWidth + x] = true;
 			}
@@ -396,16 +396,14 @@ void cMain::OnRightClick(wxMouseEvent &evt)
 	statsbarTxt2->SetLabel(wxString(" x ")<<std::to_string(lvlSelect-flagCount));
 
 	evt.Skip();
-
 }
 
 void cMain::OnClickForfeit(wxCommandEvent &evt)
 {
-	//wxMessageBox("==YOU HAVE JUST CLICKED FORFEIT==");
 	if (alreadyForfeit) return; //test state flag
-
 	alreadyForfeit = true; //set state flag
 
+	//Generate a mine field in case that the player has not clicked on main array button
 	if (bFirstClick)
 	{
 		int totalMineCount = lvlSelect;
@@ -423,6 +421,7 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 		}
 	}
 
+	//Iterate over all main array buttons to reveal the state of the associated cell
 	for (int y =0; y <nFieldHeight; y++)
 	{
 		for (int x = 0; x < nFieldWidth; x++)
@@ -501,19 +500,17 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 			break;
 	}
 
-	/*
-	UpdateEndGameScore(); //Update end game score
-	hbox1_EndGame->Layout(); //DEBUG//Update the sizer layout after changing elements within
-	int aaa = endGameDial->ShowModal();
-	if (hasClosed == true) hasClosed = this->Close();
-	*/
 	InvokeEndGameDialog();
 	//-----------------------------------------------------------
 }
 
 void cMain::OnClickSettings(wxCommandEvent &evt)
 {
-	ResetSettingsMsg();
+	//ResetSettingsMsg();
+	//insert
+	wxCommandEvent *ccc;
+	OnSliderLevelSelect(*ccc);
+	//end insert
 	int xyz = SettingsDial->ShowModal();
 }
 
@@ -554,7 +551,7 @@ void cMain::OnClickQuit(wxCommandEvent &evt)
 	endGameDial->EndModal(88);
 }
 
-void cMain::OnLevelSelect(wxCommandEvent &evt)
+void cMain::OnSliderLevelSelect(wxCommandEvent &evt)
 {
 	switch(SettingsSlider->GetValue())
 	{
@@ -610,15 +607,21 @@ void cMain::OnClickSettingsCancel(wxCommandEvent &evt)
 			SettingsSlider->SetValue(3);
 			break;
 	}
-	ResetSettingsMsg();
+	//ResetSettingsMsg();
+	//insert
+	wxCommandEvent *ccc;
+	OnSliderLevelSelect(*ccc);
+	//end insert
 	SettingsDial->EndModal(88);
 }
 
+/*
 void cMain::ResetSettingsMsg() 
 {
 	wxCommandEvent *ccc;
-	OnLevelSelect(*ccc);
+	OnSliderLevelSelect(*ccc);
 }
+*/
 
 /*
 void cMain::ResetEndGMsg() 
