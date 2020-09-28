@@ -80,7 +80,6 @@ public:
 	void OnClickSettingsOK(wxCommandEvent &evt);
 	void OnClickSettingsCancel(wxCommandEvent &evt);
 	int GetBaseScore();
-	void UpdateEndGameScore();
 	void InvokeEndGameDialog();
 
 //Preparing bitmaps & graphics for use

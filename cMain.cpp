@@ -639,68 +639,65 @@ int cMain::GetBaseScore() //returns the base score
 	}
 }
 
-void cMain::UpdateEndGameScore()
+void cMain::InvokeEndGameDialog()
 {
+	//Set up elements used to calculate the final score
 	float victoryMultip = 1.0;
 	int finalScore;
 	if (victoryAchieved)
 	{
 		victoryMultip = 2.0;
-		//INSET CODE FOR VICTORY MULTIPLIER BITMAP AND "VICTORY BONUS" STATIC TEXT
 	}
+
 	switch (lvlSelect)
 	{
 	case levelEasy:
+		//Calculate the final score
 		finalScore = GetBaseScore() * lvlMultipl[0] * victoryMultip;
 		if((GetBaseScore() * lvlMultipl[0] * victoryMultip - finalScore) >= 0.5f)
 			finalScore++;
-		//INSERT CODE FOR UPDATING LEVEL MULTIPLIER BITMAP
-		break;
-	
-	case levelMedium:
-		finalScore = GetBaseScore() * lvlMultipl[1] * victoryMultip;
-		if((GetBaseScore() * lvlMultipl[1] * victoryMultip - finalScore) >= 0.5f)
-			finalScore++;
-		//INSERT CODE FOR UPDATING LEVEL MULTIPLIER BITMAP
-		break;
 
-	case levelHard:
-		finalScore = GetBaseScore() * lvlMultipl[2] * victoryMultip;
-		if((GetBaseScore() * lvlMultipl[2] * victoryMultip - finalScore) >= 0.5f)
-			finalScore++;
-		//INSERT CODE FOR UPDATING LEVEL MULTIPLIER BITMAP
-		break;
-
-	case testLevel:
-		finalScore = 888 * victoryMultip;
-		break;
-	}
-	EndGTxt2->SetLabel( wxString("FINAL SCORE: ") <<std::to_string(finalScore));
-	EndGTxt3->SetLabel( wxString("Base score: ") <<std::to_string(GetBaseScore()));
-}
-
-void cMain::InvokeEndGameDialog()
-{
-	//Setting the multiplier bitmap according to game difficulty
-	switch (lvlSelect)
-	{
-	case levelEasy:
+		//Set the multiplier bitmap according to game difficulty
 		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_55p);
 		EndGTxt4->SetForegroundColour(*wxGREEN);
 		break;
+
 	case levelMedium:
+		//Calculate the final score
+		finalScore = GetBaseScore() * lvlMultipl[1] * victoryMultip;
+		if((GetBaseScore() * lvlMultipl[1] * victoryMultip - finalScore) >= 0.5f)
+			finalScore++;
+
+		//Set the multiplier bitmap according to game difficulty
 		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX1_5_55p);
 		EndGTxt4->SetForegroundColour(*wxCYAN);
 		break;
+
 	case levelHard:
+		//Calculate the final score
+		finalScore = GetBaseScore() * lvlMultipl[2] * victoryMultip;
+		if((GetBaseScore() * lvlMultipl[2] * victoryMultip - finalScore) >= 0.5f)
+			finalScore++;
+
+		//Set the multiplier bitmap according to game difficulty
 		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2_55p);
 		EndGTxt4->SetForegroundColour(*wxRED);
 		break;
+
 	case testLevel:
+		//Calculate the final score
+		finalScore = 888 * victoryMultip;
+		
+		//Set the multiplier bitmap according to game difficulty
 		EndGBmpMultiplier1->SetBitmap(*bmpMultiplierX2Victory_55p);
 		break;
 	}
-	UpdateEndGameScore(); //Update end game score
+
+	//Update end game scores
+	EndGTxt2->SetLabel( wxString("FINAL SCORE: ") <<std::to_string(finalScore));
+	EndGTxt3->SetLabel( wxString("Base score: ") <<std::to_string(GetBaseScore()));
+	
+	//Update the layout of dialog elements and show the dialog
 	vboxEndGame->Layout();
 	int aaa = endGameDial->ShowModal();
 	if (hasClosed == true) hasClosed = this->Close();
