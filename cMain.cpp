@@ -529,11 +529,9 @@ void cMain::OnClickRestart(wxCommandEvent &evt)
 	flagCount = 0;
 	alreadyForfeit = false; //remove forfeit flag
 	scoreUnit = 0; //reset score units
-	//update status bar score
-	statsbarTxt4->SetLabel(wxString("0"));
-
-	//Updating status bar flag msg
-	statsbarTxt2->SetLabel(wxString(" x ")<<std::to_string(lvlSelect));
+	
+	statsbarTxt4->SetLabel(wxString("0")); //update status bar score
+	statsbarTxt2->SetLabel(wxString(" x ")<<std::to_string(lvlSelect)); //Updating status bar flag msg
 }
 
 void cMain::OnClickDialogRestart(wxCommandEvent &evt)
