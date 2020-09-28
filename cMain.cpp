@@ -12,16 +12,6 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	//Setting size hints
 	this->SetSizeHints(wxSize(250,250), wxSize(1000,1000));
 
-	btn = new wxBitmapButton*[nFieldWidth*nFieldHeight];
-	wxGridSizer *grid = new wxGridSizer(nFieldWidth, nFieldHeight, 0, 0);
-	nField = new int[nFieldWidth * nFieldHeight];
-
-	//Create array indicating presence of mine flags over buttons
-	hasMineFlag = new bool[nFieldWidth * nFieldHeight];
-	for (int x = 0; x < nFieldWidth; x++)
-		for (int y =0; y <nFieldHeight; y++)
-		{ hasMineFlag[y*nFieldWidth + x] = false; }
-
 	//Adding toolbar and buttons for game control
 	wxToolBar *toolbar1 = this->CreateToolBar(wxTB_HORIZONTAL, wxID_ANY);
 	wxBitmapButton *settingsButton = new wxBitmapButton(toolbar1, 9001, *bmpSettings40p, wxDefaultPosition, wxSize(40,40), 0);
@@ -43,7 +33,18 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	toolbar1->Realize();
 	//End of toolbar section
 
+	//##//Main array of buttons section start
+	btn = new wxBitmapButton*[nFieldWidth*nFieldHeight];
+	wxGridSizer *grid = new wxGridSizer(nFieldWidth, nFieldHeight, 0, 0);
+	nField = new int[nFieldWidth * nFieldHeight];
 
+	//Create array indicating presence of mine flags over buttons
+	hasMineFlag = new bool[nFieldWidth * nFieldHeight];
+	for (int x = 0; x < nFieldWidth; x++)
+		for (int y =0; y <nFieldHeight; y++)
+		{ hasMineFlag[y*nFieldWidth + x] = false; }
+
+	//Create the individual buttons in the main array and bind each to the left click and right click functions
 	for (int x = 0; x < nFieldWidth; x++)
 	{
 		for (int y =0; y <nFieldHeight; y++)
@@ -56,13 +57,12 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 			nField[y*nFieldWidth + x] = 0;
 		}
 	}	
-
-	//##//Setting sizer within sizer to attempt to control aspect ratio
+	//Setting sizer within sizer to attempt to control aspect ratio
 	wxBoxSizer *vBox = new wxBoxSizer(wxVERTICAL);
 	vBox->Add(grid, 1, wxSHAPED | wxALIGN_CENTER);
 	this->SetSizer(vBox); //Changed parameter from 'grid' to vBox
-	grid->Layout(); //See above
 	vBox->Layout();
+	//Main array of buttons section end
 
 	//##//implementing a status bar
 	statsbar1 = this->CreateStatusBar(1, wxSTB_DEFAULT_STYLE, wxID_ANY);
@@ -101,8 +101,8 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 	hboxExtra_EndGame = new wxBoxSizer(wxHORIZONTAL);
 
 	//Set up static bitmap controls for end game dial
-	EndGBmp_TL = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TL40p, wxDefaultPosition); //DEBUG//come here//Try using an empty constructor, since the bmp will be reinitialized later anyways..
-	EndGBmp_TR = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TR40p, wxDefaultPosition); //DEBUG//come here//Try using an empty constructor, since the bmp will be reinitialized later anyways..
+	EndGBmp_TL = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TL40p, wxDefaultPosition); //DEBUG//Try using an empty constructor, since the bmp will be reinitialized later anyways..
+	EndGBmp_TR = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpEndGDial_TR40p, wxDefaultPosition); //DEBUG//Try using an empty constructor, since the bmp will be reinitialized later anyways..
 	EndGBmpMultiplier1 = new wxStaticBitmap(endGameDial, wxID_ANY, *bmpMultiplierX1_5_55p);
 
 	//Set up static text controls for end game dial
@@ -262,8 +262,8 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 		InvokeEndGameDialog();
 
 		// Rest game
-		wxCommandEvent *qqq;
-		OnClickRestart(*qqq);
+		wxCommandEvent qqq(wxEVT_NULL);
+		OnClickRestart(qqq);
 		//-----------------------------------------------------------
 	}
 
@@ -360,8 +360,8 @@ void cMain::OnButtonClicked(wxCommandEvent &evt)
 		EndGTxt5->Destroy();
 
 		// Rest game
-		wxCommandEvent *qqq;
-		OnClickRestart(*qqq);
+		wxCommandEvent qqq(wxEVT_NULL);
+		OnClickRestart(qqq);
 		//-----------------------------------------------------------
 	}
 	
@@ -449,7 +449,7 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 						}
 					}
 
-				// Update buttons label to show mine count if > 0	
+				// Update buttons label to show mine count
 				switch (mine_count)
 				{
 					case 0:
@@ -506,11 +506,10 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 
 void cMain::OnClickSettings(wxCommandEvent &evt)
 {
-	//ResetSettingsMsg();
-	//insert
+	//Reset slider description message
 	wxCommandEvent *ccc;
 	OnSliderLevelSelect(*ccc);
-	//end insert
+
 	int xyz = SettingsDial->ShowModal();
 }
 
@@ -539,8 +538,8 @@ void cMain::OnClickDialogRestart(wxCommandEvent &evt)
 	endGameDial->EndModal(88);
 
 	// Rest game
-	wxCommandEvent *qqq;
-	OnClickRestart(*qqq);
+	wxCommandEvent qqq(wxEVT_NULL);
+	OnClickRestart(qqq);
 }
 
 void cMain::OnClickQuit(wxCommandEvent &evt)
