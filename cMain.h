@@ -79,8 +79,6 @@ public:
 	void OnSliderLevelSelect(wxCommandEvent &evt);
 	void OnClickSettingsOK(wxCommandEvent &evt);
 	void OnClickSettingsCancel(wxCommandEvent &evt);
-	//void ResetSettingsMsg(); //Phased out useless
-	//void ResetEndGMsg(); //Unused
 	int GetBaseScore();
 	void UpdateEndGameScore();
 	void InvokeEndGameDialog();

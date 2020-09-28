@@ -507,8 +507,8 @@ void cMain::OnClickForfeit(wxCommandEvent &evt)
 void cMain::OnClickSettings(wxCommandEvent &evt)
 {
 	//Reset slider description message
-	wxCommandEvent *ccc;
-	OnSliderLevelSelect(*ccc);
+	wxCommandEvent qqq(wxEVT_NULL);
+	OnSliderLevelSelect(qqq);
 
 	int xyz = SettingsDial->ShowModal();
 }
@@ -585,8 +585,8 @@ void cMain::OnClickSettingsOK(wxCommandEvent &evt)
 	if (oldLvlSelect != lvlSelect)
 	{
 		// Rest game
-		wxCommandEvent *qqq;
-		OnClickRestart(*qqq);
+		wxCommandEvent qqq(wxEVT_NULL);
+		OnClickRestart(qqq);
 	}
 }
 
@@ -604,38 +604,13 @@ void cMain::OnClickSettingsCancel(wxCommandEvent &evt)
 			SettingsSlider->SetValue(3);
 			break;
 	}
-	//ResetSettingsMsg();
-	//insert
-	wxCommandEvent *ccc;
-	OnSliderLevelSelect(*ccc);
-	//end insert
+
+	//Reset slider description message
+	wxCommandEvent qqq(wxEVT_NULL);
+	OnSliderLevelSelect(qqq);
+
 	SettingsDial->EndModal(88);
 }
-
-/*
-void cMain::ResetSettingsMsg() 
-{
-	wxCommandEvent *ccc;
-	OnSliderLevelSelect(*ccc);
-}
-*/
-
-/*
-void cMain::ResetEndGMsg() 
-{
-	switch(rand() % 2) 
-	{
-		case 0:
-			EndGTxt1->SetLabel("Booom! Wrong Step!");
-			break;
-		case 1:
-			EndGTxt1->SetLabel("Booom! You've died, detective...");
-			break;
-	}
-
-	//EndGTxt2->SetLabel( wxString("FINAL SCORE: ") <<std::to_string(GetBaseScore()));
-}
-*/
 
 int cMain::GetBaseScore() //returns the base score
 {
