@@ -13,13 +13,14 @@
 class cMain : public wxFrame
 {
 public:
+	cMain();
+	virtual ~cMain();
+
+private:
 	enum gameLevel : char
 	{
 		levelEasy = 15, levelMedium = 30, levelHard = 45, testLevel = 3
 	};
-
-	cMain();
-	virtual ~cMain();
 
 	//Main button array section
 	int nFieldWidth = 10;
@@ -43,7 +44,6 @@ public:
 	wxStaticBitmap *EndGBmp_TL = nullptr; //Top left bitmap
 	wxStaticBitmap *EndGBmp_TR = nullptr; //Top right bitmap
 	wxStaticBitmap *EndGBmpMultiplier1 = nullptr; //1st multiplier bitmap
-	//wxStaticBitmap *EndGBmpMultiplier2 = nullptr; //2nd multiplier bitmap//DEBUG//moved object declaration to implementation file
 	
 	//Settings dialog section
 	wxDialog *SettingsDial = nullptr;
@@ -66,8 +66,7 @@ public:
 	float baseMultipl[3] = {11.765, 14.286, 18.182};
 	float lvlMultipl[3] = {1.0, 1.5, 2.0};
 
-
-
+	//Private member functions
 	void OnButtonClicked(wxCommandEvent &evt);
 	void OnRightClick(wxMouseEvent &evt); //***//
 	void OnClickForfeit(wxCommandEvent &evt);
@@ -82,7 +81,7 @@ public:
 	int GetBaseScore();
 	void InvokeEndGameDialog();
 
-//Preparing bitmaps & graphics for use
+	//Preparing bitmaps & graphics for use
 	wxImage *imgFlag = new wxImage(wxString("Resources/Flag.png"), wxBITMAP_TYPE_PNG);
 	wxImage *imgMine = new wxImage(wxString("Resources/Mine.png"), wxBITMAP_TYPE_PNG);
 	wxImage *img1 = new wxImage(wxString("Resources/digits-mainV2/1.png"), wxBITMAP_TYPE_PNG);
@@ -137,8 +136,7 @@ public:
 	wxBitmap *bmp7_30p = new wxBitmap(img7->Scale(40,40, wxIMAGE_QUALITY_HIGH));
 	wxBitmap *bmp8_30p = new wxBitmap(img8->Scale(40,40, wxIMAGE_QUALITY_HIGH));
 	wxBitmap *bmpBlank = new wxBitmap(wxString("Resources/blank.png"), wxBITMAP_TYPE_PNG);
-//end section
-
+	//end section
 };
 
 #endif

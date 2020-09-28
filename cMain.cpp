@@ -7,10 +7,10 @@
 
 #include "cMain.h"
 
-cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxPoint(100, 100), wxSize(600, 665))
+cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxPoint(200, 200), wxSize(560, 665))
 {
 	//Setting size hints
-	this->SetSizeHints(wxSize(250,250), wxSize(1000,1000));
+	this->SetSizeHints(wxSize(390,500), wxSize(890,1000));
 
 	//Adding toolbar and buttons for game control
 	wxToolBar *toolbar1 = this->CreateToolBar(wxTB_HORIZONTAL, wxID_ANY);
