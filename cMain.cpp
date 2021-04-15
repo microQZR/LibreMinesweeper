@@ -1,13 +1,6 @@
-/*
- * cMain.cpp
- *
- *  Created on: Aug 19, 2020
- *      Author: qzr
- */
-
 #include "cMain.h"
 
-cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxPoint(200, 200), wxSize(560, 665))
+cMain::cMain() : wxFrame(nullptr, wxID_ANY, "LibreMinesweeper", wxPoint(200, 200), wxSize(560, 665))
 {
 	//Setting size hints
 	this->SetSizeHints(wxSize(390,500), wxSize(890,1000));

@@ -1,0 +1,1 @@
+g++ -oGUI-APP cApp.cpp cMain.cpp `wx-config --cxxflags --libs`

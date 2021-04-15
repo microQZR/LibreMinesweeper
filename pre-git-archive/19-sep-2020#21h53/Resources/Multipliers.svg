@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="315"
+   height="315"
+   viewBox="0 0 83.343748 83.343752"
+   version="1.1"
+   id="svg8"
+   inkscape:export-filename="/home/qzr/Desktop/Information Technologies/C++ Source Codes/wxWidgets/Minesweeper_Alpha/Resources/MultiplierX1V2.png"
+   inkscape:export-xdpi="133.33299"
+   inkscape:export-ydpi="133.33299"
+   inkscape:version="1.0.1 (1.0.1+r73)"
+   sodipodi:docname="Multipliers.svg">
+  <defs
+     id="defs2">
+    <rect
+       x="58.162529"
+       y="89.487213"
+       width="57.603802"
+       height="54.422607"
+       id="rect882" />
+    <rect
+       x="58.162529"
+       y="89.487213"
+       width="57.603802"
+       height="54.422607"
+       id="rect882-8" />
+    <rect
+       x="58.162529"
+       y="89.487213"
+       width="57.603802"
+       height="54.422607"
+       id="rect895" />
+    <rect
+       x="58.162529"
+       y="89.487213"
+       width="57.603802"
+       height="54.422607"
+       id="rect882-8-7" />
+    <rect
+       x="58.162529"
+       y="89.487213"
+       width="57.603802"
+       height="54.422607"
+       id="rect924" />
+    <rect
+       x="58.162529"
+       y="89.487213"
+       width="57.603802"
+       height="54.422607"
+       id="rect882-8-7-3" />
+    <rect
+       x="58.162529"
+       y="89.487213"
+       width="57.603802"
+       height="54.422607"
+       id="rect954" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.94"
+     inkscape:cx="340.81927"
+     inkscape:cy="297.56016"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1439"
+     inkscape:window-height="1023"
+     inkscape:window-x="344"
+     inkscape:window-y="48"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid998" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g990"
+       transform="translate(-6.2053692,-80.193562)">
+      <path
+         sodipodi:type="star"
+         style="fill:#5555ff;fill-opacity:1;stroke-width:1.066;stroke-linejoin:bevel"
+         id="path833-3"
+         sodipodi:sides="10"
+         sodipodi:cx="70.089867"
+         sodipodi:cy="101.03583"
+         sodipodi:r1="40.152637"
+         sodipodi:r2="28.713753"
+         sodipodi:arg1="0.96630103"
+         sodipodi:arg2="1.2804603"
+         inkscape:flatsided="false"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 92.910493,134.07298 -14.60062,-5.52514 -9.176482,12.62923 -8.564557,-13.05195 -14.847203,4.82345 0.742874,-15.59337 -14.846797,-4.82471 9.766554,-12.17865 -9.17542,-12.630001 15.059742,-4.112102 6.56e-4,-15.61106 14.60062,5.525134 9.176482,-12.629227 8.564557,13.051956 14.847203,-4.823459 -0.742874,15.593375 14.846802,4.824707 -9.766558,12.178657 9.175418,12.63 -15.05974,4.1121 z"
+         inkscape:transform-center-x="-1.3586294"
+         inkscape:transform-center-y="-0.6707912"
+         transform="rotate(-2.3976005,2031.6976,-1221.3053)" />
+      <text
+         xml:space="preserve"
+         id="text880"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7556px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;white-space:pre;shape-inside:url(#rect882);fill:#ffffff;fill-opacity:1;stroke:none;"
+         transform="matrix(0.99916727,0,0,1.3298654,50.074797,47.438136)"><tspan
+           x="58.162109"
+           y="107.90827"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7556px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff">X1.5</tspan></tspan></text>
+    </g>
+    <g
+       id="g979"
+       transform="translate(-120.43081,45.70326)">
+      <path
+         sodipodi:type="star"
+         style="fill:#ff0066;fill-opacity:1;stroke-width:1.066;stroke-linejoin:bevel"
+         id="path833-3-6"
+         sodipodi:sides="10"
+         sodipodi:cx="70.089867"
+         sodipodi:cy="101.03583"
+         sodipodi:r1="40.152637"
+         sodipodi:r2="28.713753"
+         sodipodi:arg1="0.96630103"
+         sodipodi:arg2="1.2804603"
+         inkscape:flatsided="false"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 92.910493,134.07298 -14.60062,-5.52514 -9.176482,12.62923 -8.564557,-13.05195 -14.847203,4.82345 0.742874,-15.59337 -14.846797,-4.82471 9.766554,-12.17865 -9.17542,-12.630001 15.059742,-4.112102 6.56e-4,-15.61106 14.60062,5.525134 9.176482,-12.629227 8.564557,13.051956 14.847203,-4.823459 -0.742874,15.593375 14.846802,4.824707 -9.766558,12.178657 9.175418,12.63 -15.05974,4.1121 z"
+         inkscape:transform-center-x="-1.3586294"
+         inkscape:transform-center-y="-0.6707912"
+         transform="rotate(-2.3976005,-434.71416,-1913.0053)" />
+      <text
+         xml:space="preserve"
+         id="text880-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.0349px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;white-space:pre;shape-inside:url(#rect882-8);fill:#ffffff;fill-opacity:1;stroke:none;"
+         transform="matrix(1.0283039,0,0,1.5529841,78.672962,-80.026088)"><tspan
+           x="58.162109"
+           y="110.0337"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.0349px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff">X 2</tspan></tspan></text>
+    </g>
+    <g
+       id="g996"
+       transform="translate(48.139628,-221.66592)">
+      <path
+         sodipodi:type="star"
+         style="fill:#ffd42a;fill-opacity:1;stroke-width:1.066;stroke-linejoin:bevel"
+         id="path833-7"
+         sodipodi:sides="10"
+         sodipodi:cx="70.089867"
+         sodipodi:cy="101.03583"
+         sodipodi:r1="40.152637"
+         sodipodi:r2="28.713753"
+         sodipodi:arg1="0.96630103"
+         sodipodi:arg2="1.2804603"
+         inkscape:flatsided="false"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 92.910493,134.07298 -14.60062,-5.52514 -9.176482,12.62923 -8.564557,-13.05195 -14.847203,4.82345 0.742874,-15.59337 -14.846797,-4.82471 9.766554,-12.17865 -9.17542,-12.630001 15.059742,-4.112102 6.56e-4,-15.61106 14.60062,5.525134 9.176482,-12.629227 8.564557,13.051956 14.847203,-4.823459 -0.742874,15.593375 14.846802,4.824707 -9.766558,12.178657 9.175418,12.63 -15.05974,4.1121 z"
+         inkscape:transform-center-x="-1.3586294"
+         inkscape:transform-center-y="-0.6707912"
+         transform="rotate(-2.3976005,3044.5868,477.4971)" />
+      <text
+         xml:space="preserve"
+         id="text880-1-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.0349px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;white-space:pre;shape-inside:url(#rect882-8-7);fill:#000000;fill-opacity:1;stroke:none;"
+         transform="matrix(1.0283039,0,0,1.5529841,-17.95212,67.767273)"><tspan
+           x="58.162109"
+           y="110.0337"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.0349px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#000000">X 2</tspan></tspan></text>
+    </g>
+    <g
+       id="g959">
+      <path
+         sodipodi:type="star"
+         style="fill:#00ffb1;fill-opacity:1;stroke-width:1.066;stroke-linejoin:bevel"
+         id="path833"
+         sodipodi:sides="10"
+         sodipodi:cx="70.089867"
+         sodipodi:cy="101.03583"
+         sodipodi:r1="40.152637"
+         sodipodi:r2="28.713753"
+         sodipodi:arg1="0.96630103"
+         sodipodi:arg2="1.2804603"
+         inkscape:flatsided="false"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         inkscape:transform-center-x="-1.3586294"
+         inkscape:transform-center-y="-0.6707912"
+         transform="rotate(-2.3976004,-1349.6508,740.25533)"
+         d="m 92.910493,134.07298 -14.60062,-5.52514 -9.176482,12.62923 -8.564557,-13.05195 -14.847203,4.82345 0.742874,-15.59337 -14.846797,-4.82471 9.766554,-12.17865 -9.17542,-12.630001 15.059742,-4.112102 6.56e-4,-15.61106 14.60062,5.525134 9.176482,-12.629227 8.564557,13.051956 14.847203,-4.823459 -0.742874,15.593375 14.846802,4.824707 -9.766558,12.178657 9.175418,12.63 -15.05974,4.1121 z" />
+      <text
+         xml:space="preserve"
+         id="text880-1-5-8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.0349px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;white-space:pre;shape-inside:url(#rect882-8-7-3);fill:#000000;fill-opacity:1;stroke:none;"
+         transform="matrix(1.0283039,0,0,1.5529841,-32.906853,-115.29301)"><tspan
+           x="58.162109"
+           y="110.0337"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.0349px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#000000">X 1</tspan></tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="550"
+   height="550"
+   viewBox="0 0 145.52083 145.52084"
+   version="1.1"
+   id="svg8"
+   inkscape:export-filename="/home/qzr/Desktop/Information Technologies/C++ Source Codes/wxWidgets/Minesweeper_Alpha/Resources/Forfeit.png"
+   inkscape:export-xdpi="133.33299"
+   inkscape:export-ydpi="133.33299"
+   inkscape:version="1.0.1 (1.0.1+r73)"
+   sodipodi:docname="Forfeit.svg">
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter857"
+       x="-2.7424083e-05"
+       width="1.0000548"
+       y="-3.3109995e-05"
+       height="1.0000662">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.0012275413"
+         id="feGaussianBlur859" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.76"
+     inkscape:cx="442.50547"
+     inkscape:cy="426.45339"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1439"
+     inkscape:window-height="1023"
+     inkscape:window-x="324"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid988" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g986">
+      <path
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.324;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter857)"
+         d="M 22.048373,21.365732 C 51.541355,4.061973 91.675507,38.232419 106.07996,21.76554 120.4844,5.298659 118.96593,6.430861 118.96593,6.430861 l 10.50989,64.884617 c 0,0 -21.98332,33.680302 -52.260733,21.3729 -30.277418,-12.30743 -44.35134,-7.08576 -44.35134,-7.08576 z"
+         id="path839" />
+      <path
+         style="fill:#6c5d53;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 17.007557,22.240688 35.547612,139.0937 c 0,0 2.995705,0.50021 4.467385,0.25728 1.21712,-0.20091 3.430259,-1.3889 3.430259,-1.3889 L 22.048373,21.365732 c 0,0 -1.86676,-0.794633 -2.808689,-0.616915 -0.879412,0.165922 -2.232127,1.491871 -2.232127,1.491871 z"
+         id="path833"
+         sodipodi:nodetypes="ccaccac" />
+      <path
+         style="fill:#cccccc;stroke:none;stroke-width:0.225259;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="path905"
+         d="m 115.34256,54.732708 c -0.43694,2.25501 -1.08342,4.46536 -1.67856,6.68369 -0.98059,3.84112 -1.99332,7.67354 -3.09007,11.48436 -0.82472,2.64105 -1.53289,5.32242 -2.44907,7.93516 -0.0794,0.21742 -0.15883,0.43483 -0.23825,0.65224 0,0 2.70723,-1.2503 2.70723,-1.2503 v 0 c 0.0627,-0.21097 0.12543,-0.42194 0.18813,-0.63291 0.74145,-2.59927 1.41515,-5.21744 2.16767,-7.81394 1.06545,-3.83285 2.09094,-7.67618 3.14607,-11.51172 0.66537,-2.30705 1.3781,-4.60021 2.04928,-6.90543 0,0 -2.80243,1.35885 -2.80243,1.35885 z" />
+      <path
+         style="fill:#cccccc;stroke:none;stroke-width:0.215827;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="path917"
+         d="m 118.75581,66.339748 c -0.57053,1.46419 -1.13074,2.93156 -1.64912,4.42851 -0.60018,1.73695 -1.18212,3.48434 -1.68916,5.26988 0,0 2.24138,-1.3652 2.24138,-1.3652 v 0 c 0.47013,-1.77519 1.02617,-3.50922 1.64353,-5.20882 0.56789,-1.54804 1.17459,-3.06799 1.84483,-4.54526 0,0 -2.39146,1.42089 -2.39146,1.42089 z" />
+    </g>
+  </g>
+</svg>

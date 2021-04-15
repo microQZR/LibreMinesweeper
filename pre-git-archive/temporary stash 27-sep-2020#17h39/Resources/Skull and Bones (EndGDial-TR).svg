@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="650"
+   height="650"
+   viewBox="0 0 171.97916 171.97917"
+   version="1.1"
+   id="svg8"
+   inkscape:export-filename="/home/qzr/Desktop/Information Technologies/C++ Source Codes/wxWidgets/Minesweeper_Alpha/Resources/Skull and Bones (EndGDial-TR).png"
+   inkscape:export-xdpi="133.33299"
+   inkscape:export-ydpi="133.33299"
+   inkscape:version="1.0.1 (1.0.1+r73)"
+   sodipodi:docname="Skull and Bones (EndGDial-TR).svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.82"
+     inkscape:cx="373.66685"
+     inkscape:cy="240.9666"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1439"
+     inkscape:window-height="1023"
+     inkscape:window-x="471"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid837" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g986"
+       transform="translate(-14.207584,-56.067876)">
+      <ellipse
+         style="fill:#b3b3b3;stroke-width:0.440089;stroke-linejoin:bevel"
+         id="path833"
+         cx="100.6202"
+         cy="114.51994"
+         rx="47.422424"
+         ry="45.688225" />
+      <rect
+         style="fill:#b3b3b3;stroke-width:0.341587;stroke-linejoin:bevel"
+         id="rect835"
+         width="38.538742"
+         height="18.482653"
+         x="81.372681"
+         y="148.33862"
+         ry="1.3756957e-06" />
+      <g
+         id="g883"
+         transform="rotate(12.955707,231.29324,188.42493)">
+        <g
+           id="g866">
+          <circle
+             style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+             id="path839"
+             cx="29.104166"
+             cy="209.02026"
+             r="7.9375" />
+        </g>
+        <circle
+           style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+           id="path841"
+           cx="28.9352"
+           cy="219.77295"
+           r="7.9375" />
+        <g
+           id="g863"
+           transform="translate(103.31629,-23.830565)">
+          <circle
+             style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+             id="path839-3"
+             cx="74.083336"
+             cy="232.83276"
+             r="7.9375" />
+          <circle
+             style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+             id="path841-6"
+             cx="73.914368"
+             cy="243.58545"
+             r="7.9375" />
+        </g>
+        <rect
+           style="fill:#b3b3b3;stroke-width:0.380777;stroke-linejoin:bevel"
+           id="rect868"
+           width="142.875"
+           height="10.583333"
+           x="31.75"
+           y="209.02086"
+           ry="1.3756957e-06" />
+      </g>
+      <circle
+         style="fill:#000000;stroke-width:0.359;stroke-linejoin:bevel"
+         id="path870"
+         cx="100.54166"
+         cy="142.87508"
+         r="5.2916665" />
+      <ellipse
+         style="fill:#000000;stroke-width:0.430139;stroke-linejoin:bevel"
+         id="path872"
+         cx="79.335915"
+         cy="121.79301"
+         rx="15.870476"
+         ry="15.830805" />
+      <ellipse
+         style="fill:#000000;stroke-width:0.430658;stroke-linejoin:bevel"
+         id="path874"
+         cx="121.87251"
+         cy="121.73418"
+         rx="15.928856"
+         ry="15.8109" />
+      <g
+         id="g883-7"
+         transform="matrix(-0.97454367,0.22419774,0.22419774,0.97454367,152.88392,-46.776566)">
+        <g
+           id="g866-5">
+          <circle
+             style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+             id="path839-35"
+             cx="29.104166"
+             cy="209.02026"
+             r="7.9375" />
+        </g>
+        <circle
+           style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+           id="path841-62"
+           cx="28.9352"
+           cy="219.77295"
+           r="7.9375" />
+        <g
+           id="g863-9"
+           transform="translate(103.31629,-23.830565)">
+          <circle
+             style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+             id="path839-3-1"
+             cx="74.083336"
+             cy="232.83276"
+             r="7.9375" />
+          <circle
+             style="fill:#b3b3b3;stroke-width:0.359;stroke-linejoin:bevel"
+             id="path841-6-2"
+             cx="73.914368"
+             cy="243.58545"
+             r="7.9375" />
+        </g>
+        <rect
+           style="fill:#b3b3b3;stroke-width:0.380777;stroke-linejoin:bevel"
+           id="rect868-7"
+           width="142.875"
+           height="10.583333"
+           x="31.75"
+           y="209.02086"
+           ry="1.3756957e-06" />
+      </g>
+    </g>
+  </g>
+</svg>
