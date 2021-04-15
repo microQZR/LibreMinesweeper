@@ -1,1 +1,1 @@
-g++ -oGUI-APP cApp.cpp cMain.cpp `wx-config --cxxflags --libs`
+g++ -o ./BUILDS/STATIC_BINARY cApp.cpp cMain.cpp `wx-config -static=yes --cxxflags --libs`

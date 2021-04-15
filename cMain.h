@@ -49,8 +49,8 @@ private:
 	wxStaticText *statsbarTxt4 = nullptr; //status bar score label
 	
 	//MISC elements section
-	//gameLevel lvlSelect = levelMedium; //THE DEFAULT TO BE RESTORE AFTER TESTING!!!
-	gameLevel lvlSelect = testLevel; //THIS IS A TEST LINE
+	// gameLevel lvlSelect = testLevel; //THIS IS A TEST LINE
+	gameLevel lvlSelect = levelMedium; //THE DEFAULT TO BE RESTORE AFTER TESTING!!!
 	bool alreadyForfeit = false; //state flag to enable/diable forfeit button
 	bool victoryAchieved = false; //victory flag
 	
