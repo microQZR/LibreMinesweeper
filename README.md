@@ -3,7 +3,7 @@ A minesweeper recreation as a desktop application built using the [wxWidgets](ht
 
 The application current supports Linux platforms with GTK-compatible toolkits. Since wxWidgets applications can be built cross-platform, MS Windows support might be added in the future.
 
-If you do not want to build your own executable, this repository contains a pre-built package for Linux x86 [here](). __However__, please do understand that this package and this project __do not__ come with any warranty WHATSOEVER.
+If you do not want to build your own executable, this repository contains a pre-built package for Linux x86 [here](BUILDS/Linux_GTK_x86_Build.zip). (SHA-1 SUM: 335c6afa37d3788200f429d3d797a4f52db46466) __However__, please do understand that this package and this project __do not__ come with any warranty WHATSOEVER.
 
 ### Screen Captures
 
@@ -20,4 +20,4 @@ N.B. The following instructions applies to Linux platforms using GCC as build to
 - If you plan to move/copy the built binary to another location, make sure to have a copy of the [`Resources/`](Resources/) folder and its contents at the destination since it contains the image assets used by the application.
 
 ### Acknowledgement
-This work is inspired and based on that of [_javidx9_](https://www.youtube.com/watch?v=FOIbK4bJKS8).
+This work is inspired by and based on that of [_javidx9_](https://www.youtube.com/watch?v=FOIbK4bJKS8).
