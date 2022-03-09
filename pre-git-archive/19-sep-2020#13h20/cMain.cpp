@@ -1,10 +1,3 @@
-/*
- * cMain.cpp
- *
- *  Created on: Aug 19, 2020
- *      Author: qzr
- */
-
 #include "cMain.h"
 
 wxBEGIN_EVENT_TABLE(cMain, wxFrame)

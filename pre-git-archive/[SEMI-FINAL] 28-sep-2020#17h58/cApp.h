@@ -1,10 +1,3 @@
-/*
- * cApp.h
- *
- *  Created on: Aug 19, 2020
- *      Author: qzr
- */
-
 #ifndef CAPP_H_
 #define CAPP_H_
 

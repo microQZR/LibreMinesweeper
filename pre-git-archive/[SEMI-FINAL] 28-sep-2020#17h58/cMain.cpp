@@ -1,10 +1,3 @@
-/*
- * cMain.cpp
- *
- *  Created on: Aug 19, 2020
- *      Author: qzr
- */
-
 #include "cMain.h"
 
 cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxPoint(200, 200), wxSize(560, 665))

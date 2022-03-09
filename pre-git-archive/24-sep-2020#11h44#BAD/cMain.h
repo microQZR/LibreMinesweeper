@@ -1,10 +1,3 @@
-/*
- * cMain.h
- *
- *  Created on: Aug 19, 2020
- *      Author: qzr
- */
-
 #ifndef CMAIN_H_
 #define CMAIN_H_
 

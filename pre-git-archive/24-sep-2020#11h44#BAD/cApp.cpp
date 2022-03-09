@@ -1,10 +1,3 @@
-/*
- * cApp.cpp
- *
- *  Created on: Aug 19, 2020
- *      Author: qzr
- */
-
 #include "cApp.h"
 
 wxIMPLEMENT_APP(cApp);
